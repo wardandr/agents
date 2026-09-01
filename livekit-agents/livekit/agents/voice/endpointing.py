@@ -132,7 +132,7 @@ class DynamicEndpointing(BaseEndpointing):
         # VAD interrupt by audio activity is triggered before end of speech is detected
         # adjust the utterance ended time to be just before the agent speech started
         if (
-            self._agent_speech_started_at is None
+            not self._agent_speaking
             and self._speaking
             and self._utterance_started_at is not None
             and self._utterance_ended_at is not None
